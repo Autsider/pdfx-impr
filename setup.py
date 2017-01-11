@@ -18,23 +18,23 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='pdfx',
+    name='pdfx-impr',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version="1.3.1",
+    version="1.3.2",
 
     description='Extract metadata and URLs from PDF files'
         ', and download all referenced PDFs',
     long_description=long_description,
 
     # The project's main homepage.
-    url='http://www.metachris.com/pdfx',
+    url='https://github.com/Autsider/pdfx-impr',
 
     # Author details
-    author='Chris Hager',
-    author_email='chris@linuxuser.at',
+    author='Roman Teuk',
+    author_email='teukrg@gmail.com',
 
     # Choose your license
     license='Apache',
@@ -45,7 +45,7 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 4 - Beta',
 
         'Environment :: Console',
 
@@ -77,7 +77,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='pdf extract download urls',
+    keywords='pdf',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().

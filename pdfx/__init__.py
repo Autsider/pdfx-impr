@@ -91,7 +91,7 @@ class PDFx(object):
     reader = None  # ReaderBackend
     summary = {}
 
-    def __init__(self, uri):
+    def __init__(self, uri, maxpages=0):
         """
         Open PDF handle and parse PDF metadata
         - `uri` can bei either a filename or an url
@@ -124,7 +124,7 @@ class PDFx(object):
 
         # Create ReaderBackend instance
         try:
-            self.reader = PDFMinerBackend(self.stream)
+            self.reader = PDFMinerBackend(self.stream,maxpages)
         except PDFSyntaxError as e:
             raise PDFInvalidError("Invalid PDF (%s)" % unicode(e))
 

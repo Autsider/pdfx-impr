@@ -11,6 +11,7 @@ import sys
 import argparse
 import json
 import codecs
+import logging
 
 import pdfx
 from pdfx.downloader import check_refs
@@ -80,6 +81,10 @@ def create_parser():
 
     parser.add_argument("-o", "--output-file",
                         help="Output to specified file instead of console")
+    
+    parser.add_argument("-p",
+                        "--pages", type=int, default=0,
+                        help="Limit PDF pages count to process")
 
     parser.add_argument("--version",
                         action="version",
@@ -139,14 +144,13 @@ def print_to_console(text):
 def main():
     parser = create_parser()
     args = parser.parse_args()
-
     # if args.debug:
     #     logging.basicConfig(
     #             level=logging.DEBUG,
     #             format='%(levelname)s - %(module)s - %(message)s')
 
     try:
-        pdf = pdfx.PDFx(args.pdf)
+        pdf = pdfx.PDFx(args.pdf,args.pages)
     except pdfx.exceptions.FileNotFoundError as e:
         exit_with_error(ERROR_FILE_NOT_FOUND, str(e))
     except pdfx.exceptions.DownloadError as e:

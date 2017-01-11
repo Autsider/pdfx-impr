@@ -47,13 +47,14 @@ class XmpParser(object):
     def meta(self):
         """ A dictionary of all the parsed metadata. """
         meta = defaultdict(dict)
-	if self.rdftree is not None:
-		for desc in self.rdftree.findall(RDF_NS+'Description'):
-		    for el in desc.getchildren():
-		        ns, tag = self._parse_tag(el)
-		        value = self._parse_value(el)
-		        meta[ns][tag] = value
-        return dict(meta)
+
+        if self.rdftree is not None:
+            for desc in self.rdftree.findall(RDF_NS+'Description'):
+                for el in desc.getchildren():
+                    ns, tag = self._parse_tag(el)
+                    value = self._parse_value(el)
+                    meta[ns][tag] = value
+            return dict(meta)
 
     def _parse_tag(self, el):
         """ Extract the namespace and tag from an element. """
